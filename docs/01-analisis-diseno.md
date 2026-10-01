@@ -12,11 +12,11 @@ Representar a cualquier sensor del invernadero. Hay diferentes tipos de sensores
 ### Sistema de riego
 Representa al sistema de riego del invernadero. Debe poder recibir los datos medidos de los sensores y modificar su propio estado en base a esto.
 
-## 3. Estado y comportamiento+
-| Objeto propuesto | Responsabilidad                                                                                                               | Información que debe conservar | Comportamientos que debe realizar                                            |
-|------------------|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------|------------------------------------------------------------------------------|
-| Sensor           | Medir una variable ambiental del inversadero                                                                                  | Medicion de la variable <br/> Estado actual <br/> Ubicacion <br/> ID | Obtener medicion <br/> Mandar valor medido <br/> Encenderse y apagarse       |
-| Sistema de riego | Modificar el estado de su sistema de riego en base a las mediciones de los sensores | Estado del sistema de riego | Obtener datos de los sensores <br/> Modificar el estado del sistema de riego |
+## 3. Estado y comportamiento
+| Objeto propuesto | Responsabilidad                                                                                                               | Información que debe conservar | Comportamientos que debe realizar                                      |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------|------------------------------------------------------------------------|
+| Sensor           | Medir una variable ambiental del inversadero                                                                                  | Medicion de la variable <br/> Estado actual <br/> Ubicacion <br/> ID | Obtener medicion <br/> Mandar valor medido <br/> Encenderse y apagarse |
+| Sistema de riego | Modificar el estado de su sistema de riego en base a las mediciones de los sensores | Estado del sistema de riego | Obtener datos de los sensores <br/> Encenderse y apagarse              |
 
 ## 4. Características comunes y especialización
 La informacion que tienen en comun es el identificador, ubicacion, medicion y estado.
