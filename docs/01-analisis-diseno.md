@@ -55,3 +55,7 @@ El sistema de riego no debe ser subclase de sensor ya que no tienen campos ni me
 | SensorHumedad | unidadMedida | String | getUnidadMedida | Representar de forma especializada la medición de la humedad ambiental en el invernadero. |
 | SensorHumedadSuelo | unidadMedida | String | getUnidadMedida | Representar de forma especializada la medición de la humedad del suelo. |
 | SistemaRiego | id <br/> ubicacion <br/> encendido | String <br/> String <br/> boolean | getId <br/> getUbicacion <br/> isEncendido <br/> encender <br/> apagar <br/> evaluarYRegar | Representar el sistema de riego del invernadero, permitiendo modificar su estado en función de la lectura del sensor de humedad del suelo. |
+
+## Diagrama UML inicial
+
+![Diagrama UML inicial](uml-inicial.png)
