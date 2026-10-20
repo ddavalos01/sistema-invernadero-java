@@ -48,14 +48,55 @@ El sistema de riego no debe ser subclase de sensor ya que no tienen campos ni me
 
 # Fase 2. Diseño orientado a objetos y UML
 
+## Diseño de clases
+
 | Clase | Atributos propuestos | Tipo de dato | Métodos propuestos | Responsabilidad |
 |---|---|---|---|---|
-| Sensor | id <br/> ubicacion <br/> estado <br/> ultimaMedicion | String <br/> String <br/> boolean <br/> double | getId <br/> getUbicacion <br/> isEstado <br/> setEstado <br/> getUltimaMedicion <br/> setUltimaMedicion <br/> evaluarMedicion | Servir como superclase base para representaciones de sensores, contiene los datos comunes y define su comportamiento general. |
-| SensorTemperatura | unidadMedida | String | getUnidadMedida | Representar de forma especializada la medición de la temperatura dentro del invernadero. |
-| SensorHumedad | unidadMedida | String | getUnidadMedida | Representar de forma especializada la medición de la humedad ambiental en el invernadero. |
-| SensorHumedadSuelo | unidadMedida | String | getUnidadMedida | Representar de forma especializada la medición de la humedad del suelo. |
-| SistemaRiego | id <br/> ubicacion <br/> encendido | String <br/> String <br/> boolean | getId <br/> getUbicacion <br/> isEncendido <br/> encender <br/> apagar <br/> evaluarYRegar | Representar el sistema de riego del invernadero, permitiendo modificar su estado en función de la lectura del sensor de humedad del suelo. |
+| Sensor | id <br/> ubicacion <br/> estado <br/> ultimaMedicion | private String <br/> private String <br/> private boolean <br/> private double | getId <br/> getUbicacion <br/> isEstado <br/> setEstado <br/> getUltimaMedicion <br/> setUltimaMedicion <br/> evaluarMedicion | Servir como superclase base para representaciones de sensores, contiene los datos comunes y define su comportamiento general. |
+| SensorTemperatura | unidadMedida | private String | getUnidadMedida | Representar de forma especializada la medición de la temperatura dentro del invernadero. |
+| SensorHumedad | unidadMedida | private String | getUnidadMedida | Representar de forma especializada la medición de la humedad ambiental en el invernadero. |
+| SensorHumedadSuelo | unidadMedida | private String | getUnidadMedida | Representar de forma especializada la medición de la humedad del suelo. |
+| SistemaRiego | id <br/> ubicacion <br/> encendido | private String <br/> private String <br/> private boolean | getId <br/> getUbicacion <br/> isEncendido <br/> encender <br/> apagar <br/> evaluarYRegar | Representar el sistema de riego del invernadero, permitiendo modificar su estado en función de la lectura del sensor de humedad del suelo. |
 
 ## Diagrama UML inicial
 
 ![Diagrama UML inicial](uml-inicial.png)
+
+## Justificación del diseño
+
+### 1. ¿Por qué propusiste esas clases?
+Porque modelan de manera lo suficientemente precisa los elementos físicos descritos en el problema del invernadero inteligente, así como sus funciones. Se propuso una clase base general para los dispositivos de medición, clases especializadas para cada variable ambiental analizada, y una clase independiente para el actuador encargado del control del agua. Estos elementos nos permiten cumplir con los requerimientos de funcionamiento del sistema.
+
+### 2. ¿Cuál es la responsabilidad principal de cada una?
+* **Sensor**: Servir como clase base para estandarizar los datos y comportamientos comunes de cualquier sensor del invernadero.
+* **SensorTemperatura**: Especializarse en la medición de la temperatura del aire dentro del invernadero.
+* **SensorHumedad**: Especializarse en la medición de la humedad del ambiente del invernadero.
+* **SensorHumedadSuelo**: Medir el nivel de humedad en la tierra del invernadero.
+* **SistemaRiego**: Representar el actuador físico del sistema de riego, permitiendo cambiar su estado en función de las lecturas de los sensores.
+
+### 3. ¿Por qué determinados atributos serán private?
+Para que sólo puedan ser accedidos mediante métodos públicos determinados, usando getters y setters.
+
+### 4. ¿Qué información proporcionarás mediante los constructores?
+El id y la ubicación de los sensores y del sistema de riego.
+
+### 5. ¿Cuál será la superclase?
+La clase Sensor.
+
+### 6. ¿Qué clases serán subclases?
+SensorTemperatura, SensorHumedad y SensorHumedadSuelo
+
+### 7. ¿Por qué existe una relación “es un” entre ellas?
+Porque los sensores de temperatura, de humedad y de humedad de suelo son versiones especializadas de un sensor, los cuales heredan las características del sensor base.
+
+### 8. ¿Qué información o comportamiento decidiste colocar en la superclase?
+Atributos comunes a cualquier sensor, tales como el id, la ubicación, el estado actual y la última medición registrada. También métodos generales de acceso y modificación de estos atributos.
+
+### 9. ¿Qué elementos permanecerán en las subclases?
+La unidad de medición utilizada, para poder identificar a qué corresponde el valor de medida obtenido.
+
+### 10. ¿Por qué SistemaRiego no pertenece a la jerarquía de sensores?
+Porque el sistema de riego no es un sensor, sino un actuador. No obtiene información del invernadero, solo actúa en base a la información obtenida de los sensores.
+
+### 11. ¿Qué decisiones tomaste para evitar duplicar responsabilidades?
+Se colocaron todos los atributos y métodos repetitivos (ID, ubicación, estado) en la superclase Sensor para que las subclases los hereden automáticamente. Se mantuvo al SistemaRiego independiente de los sensores, encargándose exclusivamente de su propio estado en base a las lecturas de los sondores, evitando que los sensores determinen de nuevo si SstemaRiego debe cambiar su estado o no.
