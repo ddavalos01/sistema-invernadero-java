@@ -14,12 +14,15 @@ public class Main {
         sensor2.setUltimaMedicion(65.0);
         sensor3.setUltimaMedicion(12.0);
 
+        SistemaRiego riego1 = new SistemaRiego("SR1", "Fondo del invernadero");
+
         //Procesamiento polimorfico
         for (Sensor sensor : sensores) {
             sensor.evaluarMedicion();
             if (sensor instanceof SensorHumedadSuelo) {
                 SensorHumedadSuelo humedadSuelo = (SensorHumedadSuelo) sensor;
                 humedadSuelo.evaluarHumedadSuelo();
+                riego1.evaluarRegar(humedadSuelo);
             }
         }
     }
