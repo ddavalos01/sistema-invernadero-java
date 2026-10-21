@@ -125,3 +125,29 @@ Para que se haga la sobreescritura del método, el de la super clase y el da las
 
 ### 4. ¿Qué ventaja tiene esto frente a crear un método completamente diferente para cada tipo de sensor?
 Permite aprovechar el polimorfismo, con lo que es posible tratar a todos los sensores de la misma manera y así usar el mismo método, obteniendo una respuesta especializada para cada subclase.
+
+## Enlace dinámico
+
+| Tipo de referencia | Tipo real del objeto | Método que se ejecuta |
+|---|---|---|
+| Sensor | SensorTemperatura | SensorTemperatura.evaluarMedicion() |
+| Sensor | SensorHumedad | SensorHumedad.evaluarMedicion() |
+| Sensor | SensorHumedadSuelo | SensorHumedadSuelo.evaluarMedicion() |
+
+### 1. ¿Por qué una referencia de tipo Sensor puede apuntar a un objeto SensorTemperatura?
+Porque un SensorTemperatura es un Sensor mediante herencia. Una variable de la superclase puede almacenar un objeto de cualquiera de sus subclases.
+
+### 2. ¿Puede una referencia SensorTemperatura apuntar directamente a cualquier objeto Sensor?
+No, porque un Sensor general no necesariamente es de temperatura.
+
+### 3. Cuando ejecutas sensor.evaluarMedicion(), ¿qué versión del método se ejecuta?
+Se ejecuta la versión definida en la subclase del objeto real (SensorTemperatura, SensorHumedad o SensorHumedadSuelo).
+
+### 4. ¿Cómo determina Java cuál implementación utilizar?
+Mediante enlace dinámico, identificando el tipo real del objeto y llamando a su método sobrescrito correspondiente.
+
+### 5. ¿Dónde puedes observar el polimorfismo?
+Al guardar distintas subclases dentro de un mismo arreglo de tipo Sensor[]. A pesar de ser diferentes subclases, todas pueden ser agrupadas bajo Sensor.
+
+### 6. ¿Dónde puedes observar el enlace dinámico?
+Al recorrer el arreglo de sensores en un ciclo y ejecutar sensor.evaluarMedicion(), obteniendo la respuesta específica de cada subclase.
