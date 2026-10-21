@@ -151,3 +151,18 @@ Al guardar distintas subclases dentro de un mismo arreglo de tipo Sensor[]. A pe
 
 ### 6. ¿Dónde puedes observar el enlace dinámico?
 Al recorrer el arreglo de sensores en un ciclo y ejecutar sensor.evaluarMedicion(), obteniendo la respuesta específica de cada subclase.
+
+## Análisis de instanceof y casting
+
+### 1. ¿Por qué fue necesario realizar el casting?
+Porque los objetos estaban guardados en variables de tipo general Sensor. Para poder usar un método propio y exclusivo de una subclase, es necesario convertir la referencia al tipo específico de la subclase.
+
+### 2. ¿Qué comprueba instanceof?
+Comprueba si el objeto referenciado pertenece a una clase específica o a una de sus subclases, devolviendo verdadero o falso.
+
+### 3. ¿Qué podría ocurrir si intentaras convertir un objeto a una subclase incorrecta?
+Devuelve el siguiente error por incompatibilidad de tipos:
+java: incompatible types: SensorHumedad cannot be converted to SensorHumedadSuelo
+
+### 4. ¿Por qué no debes utilizar instanceof para sustituir innecesariamente el polimorfismo?
+Porque rompe el diseño orientado a objetos al llenar el código de condicionales, haciendo que sea más complicado agregar nuevos tipos de sensores.
