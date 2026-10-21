@@ -5,4 +5,9 @@ public class SensorTemperatura extends Sensor{
         super(id, ubicacion);
         unidadMedida = "°C";
     }
+
+    @Override
+    public void interpretacionMedicion() {
+        System.out.println("Valor medido por el sensor "+ SensorTemperatura.getId() +": " + SensorTemperatura.getUltimaMedicion() + unidadMedida);
+    }
 }
