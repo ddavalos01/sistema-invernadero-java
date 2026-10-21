@@ -61,3 +61,39 @@ El análisis completo, tablas de responsabilidades y diagramas UML inicial y fin
 
 ## Conclusión
 La realización de esta práctica permitió aplicar de forma integrada conceptos importantes de la programación orientada a objetos en Java. La correcta estructuración mediante herencia y polimorfismo facilitó la reutilización de código y la extensibilidad del sistema, mientras que el desacoplamiento entre los sensores y el sistema de riego permitió simular una configuración modular del invernadero que facilita la implementación de más sensores o sistemas de riego.
+
+## Reflexión final
+
+### 1. ¿Cuál es la superclase de tu sistema y cuáles son sus subclases?
+La superclase es Sensor, y sus subclases son SensorTemperatura, SensorHumedad y SensorHumedadSuelo.
+
+### 2. ¿Por qué existe una relación de herencia entre ellas?
+Porque las subclases representan tipos especializados de sensores que comparten la misma naturaleza y características fundamentales que el sensor general.
+
+### 3. ¿Qué atributos o comportamientos decidiste colocar en la superclase y por qué?
+Se colocaron los atributos id, ubicacion, estado y ultimaMedicion, junto con sus métodos de acceso y modificación, para evitar duplicar código y estandarizar los datos comunes de cualquier dispositivo.
+
+### 4. ¿Para qué utilizaste super?
+Se utilizó super(id, ubicacion) en los constructores de las subclases para invocar al constructor de la superclase y asegurar la inicialización correcta de los atributos heredados.
+
+### 5. ¿Qué método sobrescribiste?
+El método evaluarMedicion(), adaptándolo en cada subclase para interpretar la lectura específica y mostrar la unidad de medida correspondiente.
+
+### 6. ¿Dónde puedes observar polimorfismo en tu programa?
+En el arreglo de tipo Sensor[] almacenando objetos de diferentes subclases, permitiendo tratarlos de manera uniforme.
+
+### 7. ¿Dónde puedes observar enlace dinámico?
+Al recorrer el arreglo de sensores en un ciclo e invocar sensor.evaluarMedicion(), donde la JVM resuelve en tiempo de ejecución la versión específica del método para cada objeto.
+
+### 8. ¿Para qué utilizaste instanceof y casting?
+Se utilizó instanceof para verificar de forma segura si un objeto era una instancia de SensorHumedadSuelo, y un casting explícito para convertir la referencia y acceder a su método exclusivo evaluarHumedadSuelo().
+
+### 9. ¿Qué cambio realizaste entre tu UML inicial y tu UML final?
+- evaluarMedicion() cambió de devolver String a devolver void, ya que se implementó la impresión directamente dentro de la función.
+- Se eliminó getUnidadMedida() de las subclases de sensores, ya que la unidad de medida pasó a manejarse directamente dentro de la impresión de evaluarMedicion().
+- Se agregó el método evaluarHumedadSuelo() en la subclase correspondiente para ejemplificar el uso de instanceof y de castings.
+- Se modificaron y adaptaron algunos nombres de métodos y atributos para mejorar la claridad y el entendimiento del código.
+- Se incorporó la clase SistemaRiego con su respectiva relación de colaboración y uso con el sensor de humedad del suelo.
+
+### 10. Si tuvieras que agregar un SensorLuminosidad, ¿qué partes del programa tendrías que modificar?
+Habría que crear la nueva clase SensorLuminosidad extendiendo de Sensor (sobrescribiendo evaluarMedicion()), sin necesidad de modificar las clases existentes gracias al polimorfismo, solo añadiéndola a la colección en el Main.
