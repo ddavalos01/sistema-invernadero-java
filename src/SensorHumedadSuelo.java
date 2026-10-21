@@ -13,7 +13,9 @@ public class SensorHumedadSuelo extends Sensor{
 
     public void evaluarHumedadSuelo(){
         if( getUltimaMedicion()<30.0 ){
-            System.out.println("Alerta: Humedad del suelo baja");
+            System.out.println("Humedad del suelo baja");
+        } else if (getUltimaMedicion() > 70.0){
+            System.out.println("Humedad del suelo alta.");
         } else {
             System.out.println("Humedad del suelo adecuada");
         }

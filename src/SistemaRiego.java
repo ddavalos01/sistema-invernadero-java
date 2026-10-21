@@ -23,7 +23,10 @@ public class SistemaRiego {
         if (sensorHS.getUltimaMedicion() < 30.0) {
             System.out.println("Sistema de riego activado.");
             activarRiego();
-        } else if (sensorHS.getUltimaMedicion() < 80.0){
+        } else if (sensorHS.getUltimaMedicion() > 70.0){
+            System.out.println("Sistema de riego desactivado.");
+            desactivarRiego();
+        } else{
             System.out.println("Sistema de riego desactivado.");
             desactivarRiego();
         }

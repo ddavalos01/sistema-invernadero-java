@@ -9,5 +9,12 @@ public class SensorTemperatura extends Sensor{
     @Override
     public void evaluarMedicion() {
         System.out.println("Valor medido por el sensor "+ getId() +": " + getUltimaMedicion() + unidadMedida);
+        if (getUltimaMedicion() < 18.0) {
+            System.out.println("Temperatura baja.");
+        } else if (getUltimaMedicion() > 30.0){
+            System.out.println("Temperatura alta.");
+        } else{
+            System.out.println("Temperatura adecuada.");
+        }
     }
 }
