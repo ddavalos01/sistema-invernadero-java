@@ -1,8 +1,8 @@
 public class Sensor {
-    private static String id;
-    private static String ubicacion;
-    private static boolean estado;
-    private static double ultimaMedicion;
+    private String id;
+    private String ubicacion;
+    private boolean estado;
+    private double ultimaMedicion;
 
     public Sensor(String id, String ubicacion){
         this.id = id;
@@ -11,21 +11,21 @@ public class Sensor {
         ultimaMedicion = 0.0;
     }
 
-    public static String getId() {
+    public String getId() {
         return id;
     }
 
-    public static String getUbicacion() {
+    public String getUbicacion() {
         return ubicacion;
     }
 
-    public static boolean isEstado() { return estado; }
+    public boolean isEstado() { return estado; }
 
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
-    public static double getUltimaMedicion() {
+    public double getUltimaMedicion() {
         return ultimaMedicion;
     }
 
@@ -33,7 +33,7 @@ public class Sensor {
         this.ultimaMedicion = ultimaMedicion;
     }
 
-    public void interpretacionMedicion() {
+    public void evaluarMedicion() {
         System.out.println("Valor medido por el sensor "+ id +": " + ultimaMedicion);
     }
 

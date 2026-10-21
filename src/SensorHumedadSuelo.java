@@ -7,7 +7,7 @@ public class SensorHumedadSuelo extends Sensor{
     }
 
     @Override
-    public void interpretacionMedicion() {
-        System.out.println("Valor medido por el sensor "+ SensorTemperatura.getId() +": " + SensorTemperatura.getUltimaMedicion() + unidadMedida);
+    public void evaluarMedicion() {
+        System.out.println("Valor medido por el sensor "+ getId() +": " + getUltimaMedicion() + unidadMedida);
     }
 }
