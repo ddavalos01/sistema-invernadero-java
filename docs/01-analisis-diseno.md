@@ -111,3 +111,17 @@ Se utilizó en los constructores de las subclases de sensores para enviar los pa
 
 ### 11. ¿Qué decisiones tomaste para evitar duplicar responsabilidades?
 Se colocaron todos los atributos id, ubicación y estado en la superclase Sensor para que las subclases los hereden automáticamente.
+
+## Reflexión sobre la sobrescritura
+
+### 1. ¿Qué método sobrescribiste?
+El método interpretacionMedicion(), el cual está definido originalmente en la superclase Sensor y es implementado usando @Override en cada una de las subclases.
+
+### 2. ¿Qué indica @Override?
+Indica al compilador que el método que se está definiendo en la subclase tiene la intención de sobrescribir un método existente en la superclase.
+
+### 3. ¿Por qué utilizaste el mismo nombre de método en las diferentes subclases?
+Para que se haga la sobreescritura del método, el de la super clase y el da las subclases deben tener el mismo nombre.
+
+### 4. ¿Qué ventaja tiene esto frente a crear un método completamente diferente para cada tipo de sensor?
+Permite aprovechar el polimorfismo, con lo que es posible tratar a todos los sensores de la misma manera y así usar el mismo método, obteniendo una respuesta especializada para cada subclase.
