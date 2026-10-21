@@ -98,5 +98,16 @@ La unidad de medición utilizada, para poder identificar a qué corresponde el v
 ### 10. ¿Por qué SistemaRiego no pertenece a la jerarquía de sensores?
 Porque el sistema de riego no es un sensor, sino un actuador. No obtiene información del invernadero, solo actúa en base a la información obtenida de los sensores.
 
+## Constructores y super
+
+### 1. ¿Los constructores de la superclase se heredan?
+No, cada clase debe declarar sus propios constructores, pero una subclase puede invocar al constructor de su superclase utilizando super().
+
+### 2. Cuando creas un objeto de una subclase, ¿qué constructor se ejecuta primero?
+Se ejecuta primero el constructor de la superclase y posteriormente el constructor de la subclase.
+
+### 3. ¿Para qué utilizaste super(...)?
+Se utilizó en los constructores de las subclases de sensores para enviar los parámetros comunes id y ubicacion al constructor de la superclase Sensor, evitando duplicar código y asegurando que la parte heredada del objeto quede correctamente inicializada.
+
 ### 11. ¿Qué decisiones tomaste para evitar duplicar responsabilidades?
-Se colocaron todos los atributos y métodos repetitivos (ID, ubicación, estado) en la superclase Sensor para que las subclases los hereden automáticamente. Se mantuvo al SistemaRiego independiente de los sensores, encargándose exclusivamente de su propio estado en base a las lecturas de los sondores, evitando que los sensores determinen de nuevo si SstemaRiego debe cambiar su estado o no.
+Se colocaron todos los atributos id, ubicación y estado en la superclase Sensor para que las subclases los hereden automáticamente.
