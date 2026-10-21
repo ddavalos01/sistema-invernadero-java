@@ -166,3 +166,12 @@ java: incompatible types: SensorHumedad cannot be converted to SensorHumedadSuel
 
 ### 4. ¿Por qué no debes utilizar instanceof para sustituir innecesariamente el polimorfismo?
 Porque rompe el diseño orientado a objetos al llenar el código de condicionales, haciendo que sea más complicado agregar nuevos tipos de sensores.
+
+## Cambios realizados al diseño
+* evaluarMedicion() cambió de devolver String a devolver void, ya que se hizo un println dentro de la funcion en vez de devolver la String.
+* Se eliminó getUnidadMedida() de los sensores ya que esa String se implementa directamente en el println del punto anterior.
+* Se agregó evaluarHumedadSuelo() para ejemplificar el uso de instanceof y de castings.
+* Se modificaron algunos nombres en los métodos para un mejor entendimiento.
+
+## Diagrama UML final
+![Diagrama UML final](uml-final.png)
