@@ -17,6 +17,10 @@ public class Main {
         //Procesamiento polimorfico
         for (Sensor sensor : sensores) {
             sensor.evaluarMedicion();
+            if (sensor instanceof SensorHumedadSuelo) {
+                SensorHumedadSuelo humedadSuelo = (SensorHumedadSuelo) sensor;
+                humedadSuelo.evaluarHumedadSuelo();
+            }
         }
     }
 }
